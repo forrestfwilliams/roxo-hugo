@@ -1,0 +1,30 @@
+{{ with .Site.Data.services }}
+  <section class="site-services-cardblock">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-xl-6">
+          {{ with .main_title }}
+            <h3 class="fw-bold text-center">{{ . }}</h3>
+          {{ end }}
+          {{ with .main_description }}
+            <p class="text-center">{{ . }}</p>
+          {{ end }}
+        </div>
+      </div>
+      <div class="row g-5">
+        {{ range .main_cards }}
+          <div class="col-12 col-xl-4">
+            <div class="site-services-card">
+              <img class="card-img-top" src="{{ .image | absURL }}" alt="Card image cap">
+              <div class="card-body text-center">
+                {{ with .title }}<h4>{{ . }}</h4>{{ end }}
+                {{ with .text }}<p>{{ . }}</p>{{ end }}
+                {{ with .button }}<a class="btn btn-secondary" href="{{ .url }}">{{ .label }}</a>{{ end }}
+              </div>
+            </div>
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+{{ end }}
